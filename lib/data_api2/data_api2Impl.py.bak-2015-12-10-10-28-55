@@ -1,0 +1,67 @@
+#BEGIN_HEADER
+from biokbase.workspace.client import Workspace as workspaceService
+import doekbase.data_api.sequence.assembly.api
+import doekbase.data_api.annotation.genome_annotation.api
+#= biokbase.data_api.genome_annotation.GenomeAnnotationAPI(self.services, ref)
+
+#END_HEADER
+
+
+class data_api2:
+    '''
+    Module Name:
+    data_api2
+
+    Module Description:
+    A KBase module: data_api2
+    '''
+
+    ######## WARNING FOR GEVENT USERS #######
+    # Since asynchronous IO can lead to methods - even the same method -
+    # interrupting each other, you must be *very* careful when using global
+    # state. A method could easily clobber the state set by another while
+    # the latter method is running.
+    #########################################
+    #BEGIN_CLASS_HEADER
+    workspaceURL = None
+    #END_CLASS_HEADER
+
+    # config contains contents of config file in a hash or None if it couldn't
+    # be found
+    def __init__(self, config):
+        #BEGIN_CONSTRUCTOR
+        self.workspaceURL = config['workspace-url']
+        self.shockURL = config['shock-url']
+
+        self.services = {
+                "workspace_service_url": self.workspaceURL,
+                "shock_service_url": self.shockURL,
+            }
+        #END_CONSTRUCTOR
+        pass
+
+    def get_taxon(self, ctx, ObjectReference):
+        # ctx is the context object
+        # return variables are: returnVal
+        #BEGIN get_taxon
+        returnVal=dict()
+        genome_annotation_api = doekbase.data_api.annotation.genome_annotation.api.GenomeAnnotationAPI(self.services, ctx['token'], ref)
+        taxon=genome_annotation_api.get_taxon()
+        print "Gname %s"%(gname)
+
+        returnVal['feature_types']=feature_types
+
+        #END get_genome_annotations
+
+        # At some point might do deeper type checking...
+
+        if not isinstance(returnVal, dict):
+            raise ValueError('Method get_genome_annotations return value ' +
+        #END get_taxon
+
+        # At some point might do deeper type checking...
+        if not isinstance(returnVal, basestring):
+            raise ValueError('Method get_taxon return value ' +
+                             'returnVal is not type basestring as required.')
+        # return the results
+        return [returnVal]
