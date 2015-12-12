@@ -63,6 +63,60 @@ async_check_methods = {}
 async_run_methods['data_api2.get_taxon_async'] = ['data_api2', 'get_taxon']
 async_check_methods['data_api2.get_taxon_check'] = ['data_api2', 'get_taxon']
 sync_methods['data_api2.get_taxon'] = True
+async_run_methods['data_api2.get_assembly_async'] = ['data_api2', 'get_assembly']
+async_check_methods['data_api2.get_assembly_check'] = ['data_api2', 'get_assembly']
+sync_methods['data_api2.get_assembly'] = True
+async_run_methods['data_api2.get_feature_types_async'] = ['data_api2', 'get_feature_types']
+async_check_methods['data_api2.get_feature_types_check'] = ['data_api2', 'get_feature_types']
+sync_methods['data_api2.get_feature_types'] = True
+async_run_methods['data_api2.get_feature_type_descriptions_async'] = ['data_api2', 'get_feature_type_descriptions']
+async_check_methods['data_api2.get_feature_type_descriptions_check'] = ['data_api2', 'get_feature_type_descriptions']
+sync_methods['data_api2.get_feature_type_descriptions'] = True
+async_run_methods['data_api2.get_feature_type_counts_async'] = ['data_api2', 'get_feature_type_counts']
+async_check_methods['data_api2.get_feature_type_counts_check'] = ['data_api2', 'get_feature_type_counts']
+sync_methods['data_api2.get_feature_type_counts'] = True
+async_run_methods['data_api2.get_feature_ids_async'] = ['data_api2', 'get_feature_ids']
+async_check_methods['data_api2.get_feature_ids_check'] = ['data_api2', 'get_feature_ids']
+sync_methods['data_api2.get_feature_ids'] = True
+async_run_methods['data_api2.get_features_async'] = ['data_api2', 'get_features']
+async_check_methods['data_api2.get_features_check'] = ['data_api2', 'get_features']
+sync_methods['data_api2.get_features'] = True
+async_run_methods['data_api2.get_proteins_async'] = ['data_api2', 'get_proteins']
+async_check_methods['data_api2.get_proteins_check'] = ['data_api2', 'get_proteins']
+sync_methods['data_api2.get_proteins'] = True
+async_run_methods['data_api2.get_feature_locations_async'] = ['data_api2', 'get_feature_locations']
+async_check_methods['data_api2.get_feature_locations_check'] = ['data_api2', 'get_feature_locations']
+sync_methods['data_api2.get_feature_locations'] = True
+async_run_methods['data_api2.get_feature_publications_async'] = ['data_api2', 'get_feature_publications']
+async_check_methods['data_api2.get_feature_publications_check'] = ['data_api2', 'get_feature_publications']
+sync_methods['data_api2.get_feature_publications'] = True
+async_run_methods['data_api2.get_feature_dna_async'] = ['data_api2', 'get_feature_dna']
+async_check_methods['data_api2.get_feature_dna_check'] = ['data_api2', 'get_feature_dna']
+sync_methods['data_api2.get_feature_dna'] = True
+async_run_methods['data_api2.get_feature_functions_async'] = ['data_api2', 'get_feature_functions']
+async_check_methods['data_api2.get_feature_functions_check'] = ['data_api2', 'get_feature_functions']
+sync_methods['data_api2.get_feature_functions'] = True
+async_run_methods['data_api2.get_feature_aliases_async'] = ['data_api2', 'get_feature_aliases']
+async_check_methods['data_api2.get_feature_aliases_check'] = ['data_api2', 'get_feature_aliases']
+sync_methods['data_api2.get_feature_aliases'] = True
+async_run_methods['data_api2.get_cds_by_gene_async'] = ['data_api2', 'get_cds_by_gene']
+async_check_methods['data_api2.get_cds_by_gene_check'] = ['data_api2', 'get_cds_by_gene']
+sync_methods['data_api2.get_cds_by_gene'] = True
+async_run_methods['data_api2.get_cds_by_mrna_async'] = ['data_api2', 'get_cds_by_mrna']
+async_check_methods['data_api2.get_cds_by_mrna_check'] = ['data_api2', 'get_cds_by_mrna']
+sync_methods['data_api2.get_cds_by_mrna'] = True
+async_run_methods['data_api2.get_gene_by_cds_async'] = ['data_api2', 'get_gene_by_cds']
+async_check_methods['data_api2.get_gene_by_cds_check'] = ['data_api2', 'get_gene_by_cds']
+sync_methods['data_api2.get_gene_by_cds'] = True
+async_run_methods['data_api2.get_gene_by_mrna_async'] = ['data_api2', 'get_gene_by_mrna']
+async_check_methods['data_api2.get_gene_by_mrna_check'] = ['data_api2', 'get_gene_by_mrna']
+sync_methods['data_api2.get_gene_by_mrna'] = True
+async_run_methods['data_api2.get_mrna_by_cds_async'] = ['data_api2', 'get_mrna_by_cds']
+async_check_methods['data_api2.get_mrna_by_cds_check'] = ['data_api2', 'get_mrna_by_cds']
+sync_methods['data_api2.get_mrna_by_cds'] = True
+async_run_methods['data_api2.get_mrna_by_gene_async'] = ['data_api2', 'get_mrna_by_gene']
+async_check_methods['data_api2.get_mrna_by_gene_check'] = ['data_api2', 'get_mrna_by_gene']
+sync_methods['data_api2.get_mrna_by_gene'] = True
 
 class AsyncJobServiceClient(object):
 
@@ -338,6 +392,78 @@ class Application(object):
                              name='data_api2.get_taxon',
                              types=[basestring])
         self.method_authentication['data_api2.get_taxon'] = 'required'
+        self.rpc_service.add(impl_data_api2.get_assembly,
+                             name='data_api2.get_assembly',
+                             types=[basestring])
+        self.method_authentication['data_api2.get_assembly'] = 'required'
+        self.rpc_service.add(impl_data_api2.get_feature_types,
+                             name='data_api2.get_feature_types',
+                             types=[basestring])
+        self.method_authentication['data_api2.get_feature_types'] = 'required'
+        self.rpc_service.add(impl_data_api2.get_feature_type_descriptions,
+                             name='data_api2.get_feature_type_descriptions',
+                             types=[basestring, list])
+        self.method_authentication['data_api2.get_feature_type_descriptions'] = 'required'
+        self.rpc_service.add(impl_data_api2.get_feature_type_counts,
+                             name='data_api2.get_feature_type_counts',
+                             types=[basestring, list])
+        self.method_authentication['data_api2.get_feature_type_counts'] = 'required'
+        self.rpc_service.add(impl_data_api2.get_feature_ids,
+                             name='data_api2.get_feature_ids',
+                             types=[basestring, dict, basestring])
+        self.method_authentication['data_api2.get_feature_ids'] = 'required'
+        self.rpc_service.add(impl_data_api2.get_features,
+                             name='data_api2.get_features',
+                             types=[basestring, list])
+        self.method_authentication['data_api2.get_features'] = 'required'
+        self.rpc_service.add(impl_data_api2.get_proteins,
+                             name='data_api2.get_proteins',
+                             types=[basestring])
+        self.method_authentication['data_api2.get_proteins'] = 'required'
+        self.rpc_service.add(impl_data_api2.get_feature_locations,
+                             name='data_api2.get_feature_locations',
+                             types=[basestring, list])
+        self.method_authentication['data_api2.get_feature_locations'] = 'required'
+        self.rpc_service.add(impl_data_api2.get_feature_publications,
+                             name='data_api2.get_feature_publications',
+                             types=[basestring, list])
+        self.method_authentication['data_api2.get_feature_publications'] = 'required'
+        self.rpc_service.add(impl_data_api2.get_feature_dna,
+                             name='data_api2.get_feature_dna',
+                             types=[basestring, list])
+        self.method_authentication['data_api2.get_feature_dna'] = 'required'
+        self.rpc_service.add(impl_data_api2.get_feature_functions,
+                             name='data_api2.get_feature_functions',
+                             types=[basestring, list])
+        self.method_authentication['data_api2.get_feature_functions'] = 'required'
+        self.rpc_service.add(impl_data_api2.get_feature_aliases,
+                             name='data_api2.get_feature_aliases',
+                             types=[basestring, list])
+        self.method_authentication['data_api2.get_feature_aliases'] = 'required'
+        self.rpc_service.add(impl_data_api2.get_cds_by_gene,
+                             name='data_api2.get_cds_by_gene',
+                             types=[basestring, list])
+        self.method_authentication['data_api2.get_cds_by_gene'] = 'required'
+        self.rpc_service.add(impl_data_api2.get_cds_by_mrna,
+                             name='data_api2.get_cds_by_mrna',
+                             types=[basestring, list])
+        self.method_authentication['data_api2.get_cds_by_mrna'] = 'required'
+        self.rpc_service.add(impl_data_api2.get_gene_by_cds,
+                             name='data_api2.get_gene_by_cds',
+                             types=[basestring, list])
+        self.method_authentication['data_api2.get_gene_by_cds'] = 'required'
+        self.rpc_service.add(impl_data_api2.get_gene_by_mrna,
+                             name='data_api2.get_gene_by_mrna',
+                             types=[basestring, list])
+        self.method_authentication['data_api2.get_gene_by_mrna'] = 'required'
+        self.rpc_service.add(impl_data_api2.get_mrna_by_cds,
+                             name='data_api2.get_mrna_by_cds',
+                             types=[basestring, list])
+        self.method_authentication['data_api2.get_mrna_by_cds'] = 'required'
+        self.rpc_service.add(impl_data_api2.get_mrna_by_gene,
+                             name='data_api2.get_mrna_by_gene',
+                             types=[basestring, list])
+        self.method_authentication['data_api2.get_mrna_by_gene'] = 'required'
         self.auth_client = biokbase.nexus.Client(
             config={'server': 'nexus.api.globusonline.org',
                     'verify_ssl': True,
@@ -397,9 +523,10 @@ class Application(object):
                             pass
                         else:
                             try:
-                                user, _, _ = \
-                                    self.auth_client.validate_token(token)
-                                ctx['user_id'] = user
+                                #user, _, _ = \
+                                #    self.auth_client.validate_token(token)
+                                list=token.split('=')
+                                ctx['user_id'] = list[1]
                                 ctx['authenticated'] = 1
                                 ctx['token'] = token
                             except Exception, e:

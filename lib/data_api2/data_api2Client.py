@@ -171,10 +171,136 @@ class data_api2(object):
             raise ServerError('Unknown', 0, 'An unknown server error occurred')
         return resp['result']
  
-    def get_taxon(self, ObjectReference, json_rpc_context = None):
+    def get_taxon(self, ref, json_rpc_context = None):
         if json_rpc_context and type(json_rpc_context) is not dict:
             raise ValueError('Method get_taxon: argument json_rpc_context is not type dict as required.')
         resp = self._call('data_api2.get_taxon',
-                          [ObjectReference], json_rpc_context)
+                          [ref], json_rpc_context)
+        return resp[0]
+  
+    def get_assembly(self, ref, json_rpc_context = None):
+        if json_rpc_context and type(json_rpc_context) is not dict:
+            raise ValueError('Method get_assembly: argument json_rpc_context is not type dict as required.')
+        resp = self._call('data_api2.get_assembly',
+                          [ref], json_rpc_context)
+        return resp[0]
+  
+    def get_feature_types(self, ref, json_rpc_context = None):
+        if json_rpc_context and type(json_rpc_context) is not dict:
+            raise ValueError('Method get_feature_types: argument json_rpc_context is not type dict as required.')
+        resp = self._call('data_api2.get_feature_types',
+                          [ref], json_rpc_context)
+        return resp[0]
+  
+    def get_feature_type_descriptions(self, ref, feature_type_list, json_rpc_context = None):
+        if json_rpc_context and type(json_rpc_context) is not dict:
+            raise ValueError('Method get_feature_type_descriptions: argument json_rpc_context is not type dict as required.')
+        resp = self._call('data_api2.get_feature_type_descriptions',
+                          [ref, feature_type_list], json_rpc_context)
+        return resp[0]
+  
+    def get_feature_type_counts(self, ref, feature_type_list, json_rpc_context = None):
+        if json_rpc_context and type(json_rpc_context) is not dict:
+            raise ValueError('Method get_feature_type_counts: argument json_rpc_context is not type dict as required.')
+        resp = self._call('data_api2.get_feature_type_counts',
+                          [ref, feature_type_list], json_rpc_context)
+        return resp[0]
+  
+    def get_feature_ids(self, ref, filters, group_type, json_rpc_context = None):
+        if json_rpc_context and type(json_rpc_context) is not dict:
+            raise ValueError('Method get_feature_ids: argument json_rpc_context is not type dict as required.')
+        resp = self._call('data_api2.get_feature_ids',
+                          [ref, filters, group_type], json_rpc_context)
+        return resp[0]
+  
+    def get_features(self, ref, feature_id_list, json_rpc_context = None):
+        if json_rpc_context and type(json_rpc_context) is not dict:
+            raise ValueError('Method get_features: argument json_rpc_context is not type dict as required.')
+        resp = self._call('data_api2.get_features',
+                          [ref, feature_id_list], json_rpc_context)
+        return resp[0]
+  
+    def get_proteins(self, ref, json_rpc_context = None):
+        if json_rpc_context and type(json_rpc_context) is not dict:
+            raise ValueError('Method get_proteins: argument json_rpc_context is not type dict as required.')
+        resp = self._call('data_api2.get_proteins',
+                          [ref], json_rpc_context)
+        return resp[0]
+  
+    def get_feature_locations(self, ref, feature_id_list, json_rpc_context = None):
+        if json_rpc_context and type(json_rpc_context) is not dict:
+            raise ValueError('Method get_feature_locations: argument json_rpc_context is not type dict as required.')
+        resp = self._call('data_api2.get_feature_locations',
+                          [ref, feature_id_list], json_rpc_context)
+        return resp[0]
+  
+    def get_feature_publications(self, ref, feature_id_list, json_rpc_context = None):
+        if json_rpc_context and type(json_rpc_context) is not dict:
+            raise ValueError('Method get_feature_publications: argument json_rpc_context is not type dict as required.')
+        resp = self._call('data_api2.get_feature_publications',
+                          [ref, feature_id_list], json_rpc_context)
+        return resp[0]
+  
+    def get_feature_dna(self, ref, feature_id_list, json_rpc_context = None):
+        if json_rpc_context and type(json_rpc_context) is not dict:
+            raise ValueError('Method get_feature_dna: argument json_rpc_context is not type dict as required.')
+        resp = self._call('data_api2.get_feature_dna',
+                          [ref, feature_id_list], json_rpc_context)
+        return resp[0]
+  
+    def get_feature_functions(self, ref, feature_id_list, json_rpc_context = None):
+        if json_rpc_context and type(json_rpc_context) is not dict:
+            raise ValueError('Method get_feature_functions: argument json_rpc_context is not type dict as required.')
+        resp = self._call('data_api2.get_feature_functions',
+                          [ref, feature_id_list], json_rpc_context)
+        return resp[0]
+  
+    def get_feature_aliases(self, ref, feature_id_list, json_rpc_context = None):
+        if json_rpc_context and type(json_rpc_context) is not dict:
+            raise ValueError('Method get_feature_aliases: argument json_rpc_context is not type dict as required.')
+        resp = self._call('data_api2.get_feature_aliases',
+                          [ref, feature_id_list], json_rpc_context)
+        return resp[0]
+  
+    def get_cds_by_gene(self, ref, gene_id_list, json_rpc_context = None):
+        if json_rpc_context and type(json_rpc_context) is not dict:
+            raise ValueError('Method get_cds_by_gene: argument json_rpc_context is not type dict as required.')
+        resp = self._call('data_api2.get_cds_by_gene',
+                          [ref, gene_id_list], json_rpc_context)
+        return resp[0]
+  
+    def get_cds_by_mrna(self, ref, mrna_id_list, json_rpc_context = None):
+        if json_rpc_context and type(json_rpc_context) is not dict:
+            raise ValueError('Method get_cds_by_mrna: argument json_rpc_context is not type dict as required.')
+        resp = self._call('data_api2.get_cds_by_mrna',
+                          [ref, mrna_id_list], json_rpc_context)
+        return resp[0]
+  
+    def get_gene_by_cds(self, ref, cds_id_list, json_rpc_context = None):
+        if json_rpc_context and type(json_rpc_context) is not dict:
+            raise ValueError('Method get_gene_by_cds: argument json_rpc_context is not type dict as required.')
+        resp = self._call('data_api2.get_gene_by_cds',
+                          [ref, cds_id_list], json_rpc_context)
+        return resp[0]
+  
+    def get_gene_by_mrna(self, ref, mrna_id_list, json_rpc_context = None):
+        if json_rpc_context and type(json_rpc_context) is not dict:
+            raise ValueError('Method get_gene_by_mrna: argument json_rpc_context is not type dict as required.')
+        resp = self._call('data_api2.get_gene_by_mrna',
+                          [ref, mrna_id_list], json_rpc_context)
+        return resp[0]
+  
+    def get_mrna_by_cds(self, ref, gene_id_list, json_rpc_context = None):
+        if json_rpc_context and type(json_rpc_context) is not dict:
+            raise ValueError('Method get_mrna_by_cds: argument json_rpc_context is not type dict as required.')
+        resp = self._call('data_api2.get_mrna_by_cds',
+                          [ref, gene_id_list], json_rpc_context)
+        return resp[0]
+  
+    def get_mrna_by_gene(self, ref, gene_id_list, json_rpc_context = None):
+        if json_rpc_context and type(json_rpc_context) is not dict:
+            raise ValueError('Method get_mrna_by_gene: argument json_rpc_context is not type dict as required.')
+        resp = self._call('data_api2.get_mrna_by_gene',
+                          [ref, gene_id_list], json_rpc_context)
         return resp[0]
  

@@ -1,4 +1,4 @@
-package us.kbase.dataapi2;
+package us.kbase.genomeannotaitonapi;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.io.File;
@@ -14,19 +14,18 @@ import us.kbase.common.service.RpcContext;
 import us.kbase.common.service.UnauthorizedException;
 
 /**
- * <p>Original spec-file module name: data_api2</p>
+ * <p>Original spec-file module name: genome_annotaiton_api</p>
  * <pre>
- * A KBase module: data_api2
  * </pre>
  */
-public class DataApi2Client {
+public class GenomeAnnotaitonApiClient {
     private JsonClientCaller caller;
 
 
     /** Constructs a client with a custom URL and no user credentials.
      * @param url the URL of the service.
      */
-    public DataApi2Client(URL url) {
+    public GenomeAnnotaitonApiClient(URL url) {
         caller = new JsonClientCaller(url);
     }
     /** Constructs a client with a custom URL.
@@ -36,7 +35,7 @@ public class DataApi2Client {
      * @throws IOException if an IOException occurs when checking the token's
      * validity.
      */
-    public DataApi2Client(URL url, AuthToken token) throws UnauthorizedException, IOException {
+    public GenomeAnnotaitonApiClient(URL url, AuthToken token) throws UnauthorizedException, IOException {
         caller = new JsonClientCaller(url, token);
     }
 
@@ -48,7 +47,7 @@ public class DataApi2Client {
      * @throws IOException if an IOException occurs when checking the user's
      * credentials.
      */
-    public DataApi2Client(URL url, String user, String password) throws UnauthorizedException, IOException {
+    public GenomeAnnotaitonApiClient(URL url, String user, String password) throws UnauthorizedException, IOException {
         caller = new JsonClientCaller(url, user, password);
     }
 
@@ -146,8 +145,8 @@ public class DataApi2Client {
      * * Retrieve the Taxon associated with this GenomeAnnotation.
      * *
      * </pre>
-     * @param   ref   instance of original type "ObjectReference" (A string representing a reference id.)
-     * @return   instance of original type "ObjectReference" (A string representing a reference id.)
+     * @param   ref   instance of original type "ObjectReference"
+     * @return   instance of original type "ObjectReference"
      * @throws IOException if an IO exception occurs
      * @throws JsonClientException if a JSON RPC exception occurs
      */
@@ -155,7 +154,7 @@ public class DataApi2Client {
         List<Object> args = new ArrayList<Object>();
         args.add(ref);
         TypeReference<List<String>> retType = new TypeReference<List<String>>() {};
-        List<String> res = caller.jsonrpcCall("data_api2.get_taxon", args, retType, true, true, jsonRpcContext);
+        List<String> res = caller.jsonrpcCall("genome_annotaiton_api.get_taxon", args, retType, true, true, jsonRpcContext);
         return res.get(0);
     }
 
@@ -166,8 +165,8 @@ public class DataApi2Client {
      * * Retrieve the Assembly associated with this GenomeAnnotation.
      * *
      * </pre>
-     * @param   ref   instance of original type "ObjectReference" (A string representing a reference id.)
-     * @return   instance of original type "ObjectReference" (A string representing a reference id.)
+     * @param   ref   instance of original type "ObjectReference"
+     * @return   instance of original type "ObjectReference"
      * @throws IOException if an IO exception occurs
      * @throws JsonClientException if a JSON RPC exception occurs
      */
@@ -175,7 +174,7 @@ public class DataApi2Client {
         List<Object> args = new ArrayList<Object>();
         args.add(ref);
         TypeReference<List<String>> retType = new TypeReference<List<String>>() {};
-        List<String> res = caller.jsonrpcCall("data_api2.get_assembly", args, retType, true, true, jsonRpcContext);
+        List<String> res = caller.jsonrpcCall("genome_annotaiton_api.get_assembly", args, retType, true, true, jsonRpcContext);
         return res.get(0);
     }
 
@@ -186,7 +185,7 @@ public class DataApi2Client {
      * * Retrieve the list of Feature types in this GenomeAnnotation.
      * *
      * </pre>
-     * @param   ref   instance of original type "ObjectReference" (A string representing a reference id.)
+     * @param   ref   instance of original type "ObjectReference"
      * @return   instance of list of String
      * @throws IOException if an IO exception occurs
      * @throws JsonClientException if a JSON RPC exception occurs
@@ -195,7 +194,7 @@ public class DataApi2Client {
         List<Object> args = new ArrayList<Object>();
         args.add(ref);
         TypeReference<List<List<String>>> retType = new TypeReference<List<List<String>>>() {};
-        List<List<String>> res = caller.jsonrpcCall("data_api2.get_feature_types", args, retType, true, true, jsonRpcContext);
+        List<List<String>> res = caller.jsonrpcCall("genome_annotaiton_api.get_feature_types", args, retType, true, true, jsonRpcContext);
         return res.get(0);
     }
 
@@ -206,18 +205,18 @@ public class DataApi2Client {
      * * Retrieve the descriptions for each Feature type in this GenomeAnnotation.
      * *
      * </pre>
-     * @param   ref   instance of original type "ObjectReference" (A string representing a reference id.)
-     * @param   featureTypeList   instance of list of String
+     * @param   arg1   instance of original type "ObjectReference"
+     * @param   arg2   instance of list of String
      * @return   instance of mapping from String to String
      * @throws IOException if an IO exception occurs
      * @throws JsonClientException if a JSON RPC exception occurs
      */
-    public Map<String,String> getFeatureTypeDescriptions(String ref, List<String> featureTypeList, RpcContext... jsonRpcContext) throws IOException, JsonClientException {
+    public Map<String,String> getFeatureTypeDescriptions(String arg1, List<String> arg2, RpcContext... jsonRpcContext) throws IOException, JsonClientException {
         List<Object> args = new ArrayList<Object>();
-        args.add(ref);
-        args.add(featureTypeList);
+        args.add(arg1);
+        args.add(arg2);
         TypeReference<List<Map<String,String>>> retType = new TypeReference<List<Map<String,String>>>() {};
-        List<Map<String,String>> res = caller.jsonrpcCall("data_api2.get_feature_type_descriptions", args, retType, true, true, jsonRpcContext);
+        List<Map<String,String>> res = caller.jsonrpcCall("genome_annotaiton_api.get_feature_type_descriptions", args, retType, true, true, jsonRpcContext);
         return res.get(0);
     }
 
@@ -228,18 +227,18 @@ public class DataApi2Client {
      * * Retrieve the count of each Feature type in this GenomeAnnotation.
      * *
      * </pre>
-     * @param   ref   instance of original type "ObjectReference" (A string representing a reference id.)
-     * @param   featureTypeList   instance of list of String
+     * @param   arg1   instance of original type "ObjectReference"
+     * @param   arg2   instance of list of String
      * @return   instance of mapping from String to Long
      * @throws IOException if an IO exception occurs
      * @throws JsonClientException if a JSON RPC exception occurs
      */
-    public Map<String,Long> getFeatureTypeCounts(String ref, List<String> featureTypeList, RpcContext... jsonRpcContext) throws IOException, JsonClientException {
+    public Map<String,Long> getFeatureTypeCounts(String arg1, List<String> arg2, RpcContext... jsonRpcContext) throws IOException, JsonClientException {
         List<Object> args = new ArrayList<Object>();
-        args.add(ref);
-        args.add(featureTypeList);
+        args.add(arg1);
+        args.add(arg2);
         TypeReference<List<Map<String,Long>>> retType = new TypeReference<List<Map<String,Long>>>() {};
-        List<Map<String,Long>> res = caller.jsonrpcCall("data_api2.get_feature_type_counts", args, retType, true, true, jsonRpcContext);
+        List<Map<String,Long>> res = caller.jsonrpcCall("genome_annotaiton_api.get_feature_type_counts", args, retType, true, true, jsonRpcContext);
         return res.get(0);
     }
 
@@ -250,20 +249,20 @@ public class DataApi2Client {
      * * Retrieve Feature ids in this GenomeAnnotation, optionally filtered by type, region, function, alias.
      * *
      * </pre>
-     * @param   ref   instance of original type "ObjectReference" (A string representing a reference id.)
-     * @param   filters   instance of type {@link us.kbase.dataapi2.FeatureIdFilters FeatureIdFilters} (original type "Feature_id_filters")
-     * @param   groupType   instance of String
-     * @return   instance of type {@link us.kbase.dataapi2.FeatureIdMapping FeatureIdMapping} (original type "Feature_id_mapping")
+     * @param   arg1   instance of original type "ObjectReference"
+     * @param   arg2   instance of type {@link us.kbase.genomeannotaitonapi.FeatureIdFilters FeatureIdFilters} (original type "Feature_id_filters")
+     * @param   arg3   instance of String
+     * @return   instance of type {@link us.kbase.genomeannotaitonapi.FeatureIdMapping FeatureIdMapping} (original type "Feature_id_mapping")
      * @throws IOException if an IO exception occurs
      * @throws JsonClientException if a JSON RPC exception occurs
      */
-    public FeatureIdMapping getFeatureIds(String ref, FeatureIdFilters filters, String groupType, RpcContext... jsonRpcContext) throws IOException, JsonClientException {
+    public FeatureIdMapping getFeatureIds(String arg1, FeatureIdFilters arg2, String arg3, RpcContext... jsonRpcContext) throws IOException, JsonClientException {
         List<Object> args = new ArrayList<Object>();
-        args.add(ref);
-        args.add(filters);
-        args.add(groupType);
+        args.add(arg1);
+        args.add(arg2);
+        args.add(arg3);
         TypeReference<List<FeatureIdMapping>> retType = new TypeReference<List<FeatureIdMapping>>() {};
-        List<FeatureIdMapping> res = caller.jsonrpcCall("data_api2.get_feature_ids", args, retType, true, true, jsonRpcContext);
+        List<FeatureIdMapping> res = caller.jsonrpcCall("genome_annotaiton_api.get_feature_ids", args, retType, true, true, jsonRpcContext);
         return res.get(0);
     }
 
@@ -274,18 +273,18 @@ public class DataApi2Client {
      * * Retrieve Feature data available in this GenomeAnnotation.
      * *
      * </pre>
-     * @param   ref   instance of original type "ObjectReference" (A string representing a reference id.)
-     * @param   featureIdList   instance of list of String
-     * @return   instance of mapping from String to type {@link us.kbase.dataapi2.FeatureData FeatureData} (original type "Feature_data")
+     * @param   arg1   instance of original type "ObjectReference"
+     * @param   arg2   instance of list of String
+     * @return   instance of mapping from String to type {@link us.kbase.genomeannotaitonapi.FeatureData FeatureData} (original type "Feature_data")
      * @throws IOException if an IO exception occurs
      * @throws JsonClientException if a JSON RPC exception occurs
      */
-    public Map<String,FeatureData> getFeatures(String ref, List<String> featureIdList, RpcContext... jsonRpcContext) throws IOException, JsonClientException {
+    public Map<String,FeatureData> getFeatures(String arg1, List<String> arg2, RpcContext... jsonRpcContext) throws IOException, JsonClientException {
         List<Object> args = new ArrayList<Object>();
-        args.add(ref);
-        args.add(featureIdList);
+        args.add(arg1);
+        args.add(arg2);
         TypeReference<List<Map<String,FeatureData>>> retType = new TypeReference<List<Map<String,FeatureData>>>() {};
-        List<Map<String,FeatureData>> res = caller.jsonrpcCall("data_api2.get_features", args, retType, true, true, jsonRpcContext);
+        List<Map<String,FeatureData>> res = caller.jsonrpcCall("genome_annotaiton_api.get_features", args, retType, true, true, jsonRpcContext);
         return res.get(0);
     }
 
@@ -296,8 +295,8 @@ public class DataApi2Client {
      * * Retrieve Protein data available in this GenomeAnnotation.
      * *
      * </pre>
-     * @param   ref   instance of original type "ObjectReference" (A string representing a reference id.)
-     * @return   instance of mapping from String to type {@link us.kbase.dataapi2.ProteinData ProteinData} (original type "Protein_data")
+     * @param   ref   instance of original type "ObjectReference"
+     * @return   instance of mapping from String to type {@link us.kbase.genomeannotaitonapi.ProteinData ProteinData} (original type "Protein_data")
      * @throws IOException if an IO exception occurs
      * @throws JsonClientException if a JSON RPC exception occurs
      */
@@ -305,7 +304,7 @@ public class DataApi2Client {
         List<Object> args = new ArrayList<Object>();
         args.add(ref);
         TypeReference<List<Map<String,ProteinData>>> retType = new TypeReference<List<Map<String,ProteinData>>>() {};
-        List<Map<String,ProteinData>> res = caller.jsonrpcCall("data_api2.get_proteins", args, retType, true, true, jsonRpcContext);
+        List<Map<String,ProteinData>> res = caller.jsonrpcCall("genome_annotaiton_api.get_proteins", args, retType, true, true, jsonRpcContext);
         return res.get(0);
     }
 
@@ -316,18 +315,18 @@ public class DataApi2Client {
      * * Retrieve Feature locations in this GenomeAnnotation.
      * *
      * </pre>
-     * @param   ref   instance of original type "ObjectReference" (A string representing a reference id.)
-     * @param   featureIdList   instance of list of String
-     * @return   instance of mapping from String to list of type {@link us.kbase.dataapi2.Region Region}
+     * @param   arg1   instance of original type "ObjectReference"
+     * @param   arg2   instance of list of String
+     * @return   instance of mapping from String to list of type {@link us.kbase.genomeannotaitonapi.Region Region}
      * @throws IOException if an IO exception occurs
      * @throws JsonClientException if a JSON RPC exception occurs
      */
-    public Map<String,List<Region>> getFeatureLocations(String ref, List<String> featureIdList, RpcContext... jsonRpcContext) throws IOException, JsonClientException {
+    public Map<String,List<Region>> getFeatureLocations(String arg1, List<String> arg2, RpcContext... jsonRpcContext) throws IOException, JsonClientException {
         List<Object> args = new ArrayList<Object>();
-        args.add(ref);
-        args.add(featureIdList);
+        args.add(arg1);
+        args.add(arg2);
         TypeReference<List<Map<String,List<Region>>>> retType = new TypeReference<List<Map<String,List<Region>>>>() {};
-        List<Map<String,List<Region>>> res = caller.jsonrpcCall("data_api2.get_feature_locations", args, retType, true, true, jsonRpcContext);
+        List<Map<String,List<Region>>> res = caller.jsonrpcCall("genome_annotaiton_api.get_feature_locations", args, retType, true, true, jsonRpcContext);
         return res.get(0);
     }
 
@@ -338,7 +337,7 @@ public class DataApi2Client {
      * * Retrieve Feature publications in this GenomeAnnotation.
      * *
      * </pre>
-     * @param   ref   instance of original type "ObjectReference" (A string representing a reference id.)
+     * @param   ref   instance of original type "ObjectReference"
      * @param   featureIdList   instance of list of String
      * @return   instance of mapping from String to list of String
      * @throws IOException if an IO exception occurs
@@ -349,7 +348,7 @@ public class DataApi2Client {
         args.add(ref);
         args.add(featureIdList);
         TypeReference<List<Map<String,List<String>>>> retType = new TypeReference<List<Map<String,List<String>>>>() {};
-        List<Map<String,List<String>>> res = caller.jsonrpcCall("data_api2.get_feature_publications", args, retType, true, true, jsonRpcContext);
+        List<Map<String,List<String>>> res = caller.jsonrpcCall("genome_annotaiton_api.get_feature_publications", args, retType, true, true, jsonRpcContext);
         return res.get(0);
     }
 
@@ -360,7 +359,7 @@ public class DataApi2Client {
      * * Retrieve Feature DNA sequences in this GenomeAnnotation.
      * *
      * </pre>
-     * @param   ref   instance of original type "ObjectReference" (A string representing a reference id.)
+     * @param   ref   instance of original type "ObjectReference"
      * @param   featureIdList   instance of list of String
      * @return   instance of mapping from String to String
      * @throws IOException if an IO exception occurs
@@ -371,7 +370,7 @@ public class DataApi2Client {
         args.add(ref);
         args.add(featureIdList);
         TypeReference<List<Map<String,String>>> retType = new TypeReference<List<Map<String,String>>>() {};
-        List<Map<String,String>> res = caller.jsonrpcCall("data_api2.get_feature_dna", args, retType, true, true, jsonRpcContext);
+        List<Map<String,String>> res = caller.jsonrpcCall("genome_annotaiton_api.get_feature_dna", args, retType, true, true, jsonRpcContext);
         return res.get(0);
     }
 
@@ -382,7 +381,7 @@ public class DataApi2Client {
      * * Retrieve Feature functions in this GenomeAnnotation.
      * *
      * </pre>
-     * @param   ref   instance of original type "ObjectReference" (A string representing a reference id.)
+     * @param   ref   instance of original type "ObjectReference"
      * @param   featureIdList   instance of list of String
      * @return   instance of mapping from String to String
      * @throws IOException if an IO exception occurs
@@ -393,7 +392,7 @@ public class DataApi2Client {
         args.add(ref);
         args.add(featureIdList);
         TypeReference<List<Map<String,String>>> retType = new TypeReference<List<Map<String,String>>>() {};
-        List<Map<String,String>> res = caller.jsonrpcCall("data_api2.get_feature_functions", args, retType, true, true, jsonRpcContext);
+        List<Map<String,String>> res = caller.jsonrpcCall("genome_annotaiton_api.get_feature_functions", args, retType, true, true, jsonRpcContext);
         return res.get(0);
     }
 
@@ -404,7 +403,7 @@ public class DataApi2Client {
      * * Retrieve Feature aliases in this GenomeAnnotation.
      * *
      * </pre>
-     * @param   ref   instance of original type "ObjectReference" (A string representing a reference id.)
+     * @param   ref   instance of original type "ObjectReference"
      * @param   featureIdList   instance of list of String
      * @return   instance of mapping from String to list of String
      * @throws IOException if an IO exception occurs
@@ -415,7 +414,7 @@ public class DataApi2Client {
         args.add(ref);
         args.add(featureIdList);
         TypeReference<List<Map<String,List<String>>>> retType = new TypeReference<List<Map<String,List<String>>>>() {};
-        List<Map<String,List<String>>> res = caller.jsonrpcCall("data_api2.get_feature_aliases", args, retType, true, true, jsonRpcContext);
+        List<Map<String,List<String>>> res = caller.jsonrpcCall("genome_annotaiton_api.get_feature_aliases", args, retType, true, true, jsonRpcContext);
         return res.get(0);
     }
 
@@ -426,7 +425,7 @@ public class DataApi2Client {
      * * Retrieve the CDS id for each Gene id in this GenomeAnnotation.
      * *
      * </pre>
-     * @param   ref   instance of original type "ObjectReference" (A string representing a reference id.)
+     * @param   ref   instance of original type "ObjectReference"
      * @param   geneIdList   instance of list of String
      * @return   instance of mapping from String to list of String
      * @throws IOException if an IO exception occurs
@@ -437,7 +436,7 @@ public class DataApi2Client {
         args.add(ref);
         args.add(geneIdList);
         TypeReference<List<Map<String,List<String>>>> retType = new TypeReference<List<Map<String,List<String>>>>() {};
-        List<Map<String,List<String>>> res = caller.jsonrpcCall("data_api2.get_cds_by_gene", args, retType, true, true, jsonRpcContext);
+        List<Map<String,List<String>>> res = caller.jsonrpcCall("genome_annotaiton_api.get_cds_by_gene", args, retType, true, true, jsonRpcContext);
         return res.get(0);
     }
 
@@ -448,7 +447,7 @@ public class DataApi2Client {
      * * Retrieve the CDS id for each mRNA id in this GenomeAnnotation.
      * *
      * </pre>
-     * @param   ref   instance of original type "ObjectReference" (A string representing a reference id.)
+     * @param   ref   instance of original type "ObjectReference"
      * @param   mrnaIdList   instance of list of String
      * @return   instance of mapping from String to String
      * @throws IOException if an IO exception occurs
@@ -459,7 +458,7 @@ public class DataApi2Client {
         args.add(ref);
         args.add(mrnaIdList);
         TypeReference<List<Map<String,String>>> retType = new TypeReference<List<Map<String,String>>>() {};
-        List<Map<String,String>> res = caller.jsonrpcCall("data_api2.get_cds_by_mrna", args, retType, true, true, jsonRpcContext);
+        List<Map<String,String>> res = caller.jsonrpcCall("genome_annotaiton_api.get_cds_by_mrna", args, retType, true, true, jsonRpcContext);
         return res.get(0);
     }
 
@@ -470,7 +469,7 @@ public class DataApi2Client {
      * * Retrieve the Gene id for each CDS id in this GenomeAnnotation.
      * *
      * </pre>
-     * @param   ref   instance of original type "ObjectReference" (A string representing a reference id.)
+     * @param   ref   instance of original type "ObjectReference"
      * @param   cdsIdList   instance of list of String
      * @return   instance of mapping from String to String
      * @throws IOException if an IO exception occurs
@@ -481,7 +480,7 @@ public class DataApi2Client {
         args.add(ref);
         args.add(cdsIdList);
         TypeReference<List<Map<String,String>>> retType = new TypeReference<List<Map<String,String>>>() {};
-        List<Map<String,String>> res = caller.jsonrpcCall("data_api2.get_gene_by_cds", args, retType, true, true, jsonRpcContext);
+        List<Map<String,String>> res = caller.jsonrpcCall("genome_annotaiton_api.get_gene_by_cds", args, retType, true, true, jsonRpcContext);
         return res.get(0);
     }
 
@@ -492,7 +491,7 @@ public class DataApi2Client {
      * * Retrieve the Gene id for each mRNA id in this GenomeAnnotation.
      * *
      * </pre>
-     * @param   ref   instance of original type "ObjectReference" (A string representing a reference id.)
+     * @param   ref   instance of original type "ObjectReference"
      * @param   mrnaIdList   instance of list of String
      * @return   instance of mapping from String to String
      * @throws IOException if an IO exception occurs
@@ -503,7 +502,7 @@ public class DataApi2Client {
         args.add(ref);
         args.add(mrnaIdList);
         TypeReference<List<Map<String,String>>> retType = new TypeReference<List<Map<String,String>>>() {};
-        List<Map<String,String>> res = caller.jsonrpcCall("data_api2.get_gene_by_mrna", args, retType, true, true, jsonRpcContext);
+        List<Map<String,String>> res = caller.jsonrpcCall("genome_annotaiton_api.get_gene_by_mrna", args, retType, true, true, jsonRpcContext);
         return res.get(0);
     }
 
@@ -514,7 +513,7 @@ public class DataApi2Client {
      * * Retrieve the mRNA id for each CDS id in this GenomeAnnotation.
      * *
      * </pre>
-     * @param   ref   instance of original type "ObjectReference" (A string representing a reference id.)
+     * @param   ref   instance of original type "ObjectReference"
      * @param   geneIdList   instance of list of String
      * @return   instance of mapping from String to String
      * @throws IOException if an IO exception occurs
@@ -525,7 +524,7 @@ public class DataApi2Client {
         args.add(ref);
         args.add(geneIdList);
         TypeReference<List<Map<String,String>>> retType = new TypeReference<List<Map<String,String>>>() {};
-        List<Map<String,String>> res = caller.jsonrpcCall("data_api2.get_mrna_by_cds", args, retType, true, true, jsonRpcContext);
+        List<Map<String,String>> res = caller.jsonrpcCall("genome_annotaiton_api.get_mrna_by_cds", args, retType, true, true, jsonRpcContext);
         return res.get(0);
     }
 
@@ -536,18 +535,18 @@ public class DataApi2Client {
      * * Retrieve the mRNA id for each Gene id in this GenomeAnnotation.
      * *
      * </pre>
-     * @param   ref   instance of original type "ObjectReference" (A string representing a reference id.)
+     * @param   arg1   instance of original type "ObjectReference"
      * @param   geneIdList   instance of list of String
      * @return   instance of mapping from String to list of String
      * @throws IOException if an IO exception occurs
      * @throws JsonClientException if a JSON RPC exception occurs
      */
-    public Map<String,List<String>> getMrnaByGene(String ref, List<String> geneIdList, RpcContext... jsonRpcContext) throws IOException, JsonClientException {
+    public Map<String,List<String>> getMrnaByGene(String arg1, List<String> geneIdList, RpcContext... jsonRpcContext) throws IOException, JsonClientException {
         List<Object> args = new ArrayList<Object>();
-        args.add(ref);
+        args.add(arg1);
         args.add(geneIdList);
         TypeReference<List<Map<String,List<String>>>> retType = new TypeReference<List<Map<String,List<String>>>>() {};
-        List<Map<String,List<String>>> res = caller.jsonrpcCall("data_api2.get_mrna_by_gene", args, retType, true, true, jsonRpcContext);
+        List<Map<String,List<String>>> res = caller.jsonrpcCall("genome_annotaiton_api.get_mrna_by_gene", args, retType, true, true, jsonRpcContext);
         return res.get(0);
     }
 }
