@@ -1,4 +1,4 @@
 #!/bin/sh
 
 docker rm -f data_api2
-docker run -d  -v `pwd`/test_local/workdir:/kb/module/work --name data_api2 --link redist:redis -P -p 5000 test/data_api2:latest 
+docker run --dns 8.8.8.8 -d  -v `pwd`/test_local/workdir:/kb/module/work --name data_api2 --link redist:redis -P -p 5000 test/data_api2:latest 
